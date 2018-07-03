@@ -1,0 +1,4 @@
+export const FORM_UPDATE = 'FORM_UPDATE';
+export const FORM_ERROR = 'FORM_ERROR';
+export const FORM_RESET_TO_PREFILLED = 'FORM_RESET_TO_PREFILLED';
+export const FORM_RESET = 'FORM_RESET';
