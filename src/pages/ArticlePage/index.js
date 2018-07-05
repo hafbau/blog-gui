@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import get from 'lodash.get';
-import { withStyles, Grid, Divider } from 'material-ui';
+import { withStyles, Grid, Divider } from '@material-ui/core';
 
 import {
     Button,

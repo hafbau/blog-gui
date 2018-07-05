@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { withStyles } from 'material-ui';
+import { withStyles } from '@material-ui/core';
 import { Header, Footer } from 'common/components';
 import adminRoutes from 'routes/adminRoutes';
 

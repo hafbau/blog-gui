@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { withStyles, Grid, Divider } from "material-ui";
+import { withStyles, Grid, Divider } from '@material-ui/core';
 
 import {
   Button,

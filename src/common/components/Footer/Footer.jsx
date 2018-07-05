@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { List, ListItem, withStyles } from 'material-ui';
+import { List, ListItem, withStyles } from '@material-ui/core';
 
 import footerStyle from 'assets/jss/components_styles/footerStyle';
 

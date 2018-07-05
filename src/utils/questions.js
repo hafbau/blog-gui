@@ -1,7 +1,7 @@
 import React from 'react';
 import Parser from 'react-jsx-parser';
 import * as questions from 'data';
-import { Grid } from "material-ui";
+import { Grid } from '@material-ui/core';
 import {
   CustomInput,
   ItemGrid,

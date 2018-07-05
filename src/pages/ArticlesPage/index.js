@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { withStyles } from 'material-ui';
+import { withStyles } from '@material-ui/core';
 import actions from './articlesPageActions';
 import articlesPageStyles from './articlesPageStyles';
 import ArticlePreview from './ArticlePreview';

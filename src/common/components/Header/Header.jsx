@@ -1,41 +1,36 @@
 import React from "react";
 import PropTypes from "prop-types";
+import ArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import {
   withStyles,
-  AppBar,
-  Toolbar,
-  Hidden,
   // Button
-} from "material-ui";
-import cx from "classnames";
+} from '@material-ui/core';
 
-import headerStyle from "assets/jss/components_styles/headerStyle";
+import headerStyle from "./headerStyle";
 
 import HeaderLinks from "./HeaderLinks";
 
 function Header({ ...props }) {
-  const { classes, color } = props;
-  const appBarClasses = cx({
-    [" " + classes[color]]: color
-  });
+  const { classes } = props;
   return (
-    <AppBar className={classes.appBar + appBarClasses}>
-      <Toolbar className={classes.container}>
-        <div className={classes.flex}>
-          {/* <Button href="#" className={classes.title}>
-          </Button> */}
+    <header className={classes.appBar}>
+        <div className={classes.title}>
+            Hafiz Suara
         </div>
-        <Hidden smDown implementation="css">
-          <HeaderLinks />
-        </Hidden>
-      </Toolbar>
-    </AppBar>
+        
+        <div className={classes.title}>
+            <ArrowRight className={classes.middle} />
+        </div>
+        
+        <div className={classes.pageTitle}>Blog</div>
+        
+        <HeaderLinks />
+    </header>
   );
 }
 
 Header.propTypes = {
-  classes: PropTypes.object.isRequired,
-  color: PropTypes.oneOf(["primary", "info", "success", "warning", "danger"])
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(headerStyle)(Header);

@@ -1,29 +1,24 @@
 import React from 'react';
+import MenuIcon from '@material-ui/icons/Menu';
 import {
   withStyles,
   IconButton,
-  Hidden
-} from 'material-ui';
-import { Person } from '@material-ui/icons';
+} from '@material-ui/core';
 
-import headerLinksStyle from 'assets/jss/components_styles/headerLinksStyle';
+import headerLinksStyle from './headerLinksStyle';
 
 class HeaderLinks extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
-        <IconButton
+        <div
           color='inherit'
-          aria-label='Person'
+          aria-label='menu'
           className={classes.buttonLink}
         >
-          <Person className={classes.links} />
-          <Hidden mdUp>
-            <p className={classes.linkText}>Profile</p>
-          </Hidden>
-        </IconButton>
-      </div>
+          <p className={classes.linkText}>Menu</p>
+          <MenuIcon className={classes.links} />
+        </div>
     );
   }
 }
