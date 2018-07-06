@@ -28,6 +28,7 @@ const footerStyle = {
     float: "right!important"
   },
   footer: {
+    position: "absolute",
     bottom: "0",
     borderTop: "1px solid #e7e7e7",
     padding: "15px 0",

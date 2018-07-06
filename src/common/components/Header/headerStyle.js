@@ -3,14 +3,7 @@
 // #############################
 
 import {
-  container,
   defaultFont,
-  primaryColor,
-  defaultBoxShadow,
-  infoColor,
-  successColor,
-  warningColor,
-  dangerColor
 } from "assets/jss/global_styles_variables";
 
 const headerStyle = theme => ({
