@@ -15,7 +15,7 @@ const headerStyle = theme => ({
     position: "absolute",
     zIndex: "1029",
     color: "#555555",
-    padding: "10px 40px",
+    padding: "40px",
     transition: "all 150ms ease 0s",
   },
   flex: {

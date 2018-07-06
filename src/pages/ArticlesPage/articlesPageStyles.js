@@ -24,7 +24,25 @@ const articlesPageStyle = theme => ({
         backgroundPosition: 'center center',
         width: '33.3%',
     },
-    articlePreviewTextWrapper
+    articlePreviewTextWrapper,
+    footerStyle: {
+        footer: {
+            position: 'absolute',
+            bottom: '0',
+            padding: '40px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            width: '100%',
+            boxSizing: 'border-box',
+        },
+        arrows: {
+            borderRadius: '50%',
+            backgroundColor: 'white',
+            padding: '15px',
+            cursor: 'pointer'
+        }
+    }
 });
 
 export default articlesPageStyle;
