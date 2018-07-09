@@ -1,17 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import get from 'lodash.get';
-import { withStyles, Grid, Divider } from '@material-ui/core';
-
-import {
-    Button,
-    ItemGrid,
-    P
-} from 'common/components';
+import { withStyles } from '@material-ui/core';
+import Markdown from 'utils/markdown';
 
 import config from 'config';
 import actions from './actions';
@@ -33,13 +27,33 @@ class ArticlePage extends React.Component {
   
     render() {
         const { article } = this.state;
+        const { classes } = this.props;
         return (
             <div>
                 {<article key={article._id}>
-                    <img src={path + get(article, 'media.url')} alt={article.title} />
-                    <h1>{article.title}</h1>
-                    <small>{article.createdAt}</small>
-                    <P>{article.body}</P>
+                    <div
+                        className={classes.hero}
+                        style={{ backgroundImage: `url(${path + get(article, 'media.url')})` }}
+                    >
+                        <div className={classes.titleWrapper}>
+                            <h1>{article.title}</h1>
+                            <small>{article.createdAt}</small>
+                        </div>
+                    </div>
+                    <div className={classes.bodyWrapper}>
+                        <aside
+                            className={classes.contentAside + ' ' + classes.contentNav}>
+                        </aside>
+
+                        <section>
+                            <header className={classes.articleSummary}>{article.summary || ''}</header>
+                            <div className={classes.articleBody}>
+                                <Markdown text={article.body} />
+                            </div>
+                        </section>
+
+                        <aside className={classes.contentAside}></aside>
+                    </div>
                 </article>}
             </div>
         );

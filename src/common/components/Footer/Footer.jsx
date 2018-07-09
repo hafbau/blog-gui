@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { List, ListItem, withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 import ArrowBackward from '@material-ui/icons/ArrowBack';
 import ArrowForward from '@material-ui/icons/ArrowForward';
 

@@ -1,7 +1,6 @@
 html * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* transition: all 0.3s ease-in-out; */
 }
 
 
@@ -138,6 +137,28 @@ footer ul li a {
 
 footer ul li a:hover {
     text-decoration: none;
+}
+
+code {
+    color: rgb(210, 36, 36);
+    padding: 3px;
+    background-color: rgba(108, 108, 108, 0.2)
+}
+
+pre > code {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #333;
+    color: white;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+.disabled {
+    pointer-events: none;
+    color: rgb(188, 188, 188) !important;
 }
 
 @media (max-width: 991px) {

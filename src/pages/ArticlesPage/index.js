@@ -24,25 +24,27 @@ class ArticlesPage extends React.Component {
     }
 
     navigate(step) {
-        console.log('step', step)
         this.setState({ currentPage: this.state.currentPage + step })
     }
   
     render() {
         const { articles, currentPage } = this.state;
         const { classes } = this.props;
+        const currentPageArticles = articles.slice(currentPage, currentPage + 3)
         return ([
             <div className={classes.articles}>
-                {articles.map(article => <ArticlePreview
+                {
+                    currentPageArticles.map(article => < ArticlePreview
                     key={article._id}
                     article={article}
                     classes={classes}
                 />)}
             </div>,
             <ArticlesPageFooter
-                classes={classes.footerStyle}
+                footerClass={classes.footer}
+                arrowsClass={classes.arrows}
                 hasPrev={currentPage > 0}
-                hasNext={currentPage < articles.length + 2}
+                hasNext={currentPage + 3 < articles.length}
                 onNavigate={(step) => this.navigate(step)}
             />
         ]);

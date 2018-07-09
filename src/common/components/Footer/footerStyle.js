@@ -2,7 +2,7 @@
 // // // Footer styles
 // #############################
 
-import { defaultFont, container, primaryColor } from 'assets/jss/global_styles_variables';
+import { defaultFont } from 'assets/jss/global_styles_variables';
 
 const footerStyle = {
   footer: {

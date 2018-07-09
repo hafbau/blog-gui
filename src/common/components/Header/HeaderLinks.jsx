@@ -18,6 +18,7 @@ class HeaderLinks extends React.Component {
     return (
       [
         <div
+          key="buttonLink"
           color='inherit'
           aria-label='menu'
           className={classes.buttonLink}
@@ -29,7 +30,7 @@ class HeaderLinks extends React.Component {
           {!openMenu && <MenuIcon className={classes.links} />}
         </div>,
 
-        <div>{this.state.openMenu && <OpenedMenu />}</div>
+        <div key="openedMenu">{this.state.openMenu && <OpenedMenu />}</div>
     ]
     );
   }

@@ -14,39 +14,6 @@ export function splitListToArray(list = '', delimiter = '\n') {
     return list.split(delimiter);
 }
 
-
-export function parseRelationship(value) {
-    return {
-        "spouse": "Spouse",
-        "adultIndependentPartner": "Adult Independent Partner",
-        "child": "Child",
-        "grandchild": "Grandchild",
-        "father": "Father",
-        "mother": "Mother",
-        "grandfather": "Grandfather",
-        "grandmother": "Grandmother",
-        "brother": "Brother",
-        "sister": "Sister",
-        "niece": "Niece",
-        "nephew": "Nephew",
-        "friend": "Friend",
-        "other": "Other"
-    }[value]
-}
-
-export function parseMaritalStatus(value) {
-    if (!value) return value;
-    return {
-        "married": "Married",
-        "divorced": "Divorced",
-        "separated": "Separated",
-        "livingWithAdultIndependentPartner": "Living With Adult Independent Partner",
-        "livingCommonLaw": "Living Common Law",
-        "single": "Single",
-        "widowed": "Widowed"
-    }[value]
-}
-
 export function parseDate(dateString) {
     if (!dateString) return dateString;
     const dateArray = dateString.split('-');

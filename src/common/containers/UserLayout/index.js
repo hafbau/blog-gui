@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core';
-import { Header, Footer } from 'common/components';
+import { Header } from 'common/components';
 import userRoutes from 'routes/userRoutes';
 
 import userLayoutStyle from './userLayoutStyle';
@@ -41,7 +41,6 @@ class App extends React.Component {
             <div className={classes.container}>{switchRoutes}</div>
           </div>
           
-          <Footer />
         </div>
       </div>
     );
