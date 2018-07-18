@@ -6,8 +6,8 @@ import {
   // Button
 } from '@material-ui/core';
 
+import { Link } from 'react-router-dom';
 import headerStyle from "./headerStyle";
-
 import HeaderLinks from "./HeaderLinks";
 
 function Header({ ...props }) {
@@ -15,14 +15,11 @@ function Header({ ...props }) {
   return (
     <header className={classes.appBar}>
         <div className={classes.title}>
-            Hafiz Suara
+            <Link to="/articles" className={classes.pageTitle}>
+                Hafiz Suara
+                <ArrowRight className={classes.middle} />
+            </Link>
         </div>
-        
-        <div className={classes.title}>
-            <ArrowRight className={classes.middle} />
-        </div>
-        
-        <div className={classes.pageTitle}>Blog</div>
         
         <HeaderLinks />
     </header>

@@ -14,8 +14,18 @@ export const articlePreviewTextWrapper = {
     flexDirection: 'column',
     padding: '40px',
     height: '100%',
+    fontSize: '1.2rem',
+    fontWeight: '500',
     boxSizing: 'border-box'
 }
+
+export const absoluteLink = {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    bottom: '0',
+    right: '0'
+};
 
 const articlesPageStyle = theme => ({
     articles,
@@ -23,8 +33,11 @@ const articlesPageStyle = theme => ({
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
         width: '33.3%',
+        backgroundColor: '#232',
+        position: 'relative'
     },
     articlePreviewTextWrapper,
+    absoluteLink,
     footer: {
         position: 'absolute',
         bottom: '0',

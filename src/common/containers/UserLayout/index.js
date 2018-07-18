@@ -6,10 +6,11 @@ import { withStyles } from '@material-ui/core';
 import { Header } from 'common/components';
 import userRoutes from 'routes/userRoutes';
 
+import PageTransition from 'react-router-page-transition';
 import userLayoutStyle from './userLayoutStyle';
 
-const switchRoutes = (
-  <Switch>
+const switchRoutes = (location) => (
+  <Switch location={location} >
     {userRoutes.map((prop, key) => {
       if (prop.redirect)
         return <Redirect from={prop.path} to={prop.to} key={key} />;
@@ -36,10 +37,11 @@ class App extends React.Component {
             handleMenuToggle={() => this.handleMenuToggle}
             {...rest}
           />
-          
-          <div className={classes.content}>
-            <div className={classes.container}>{switchRoutes}</div>
-          </div>
+          <PageTransition>
+            <div className={classes.content}>
+              <div className={classes.container}>{switchRoutes(this.props.location)}</div>
+            </div>
+          </PageTransition>
           
         </div>
       </div>

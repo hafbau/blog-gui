@@ -2,42 +2,81 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 
+import moment from 'moment';
 import get from 'lodash.get';
 import { withStyles } from '@material-ui/core';
 import Markdown from 'utils/markdown';
 
 import config from 'config';
 import actions from './actions';
-import articlePageStyles from './styles';
+import articlePageStyles from './style';
 
 const path = config.API_PATH;
 class ArticlePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            article: {}
+            article: props.article || {},
+            previousArticle: props.previousArticle,
+            nextArticle: props.nextArticle
         }
     }
     
     componentWillMount() {
-        this.props.getArticle(get(this.props, 'match.params.id'))
-            .then(article => this.setState({ article }));
+        const articleId = get(this.props, 'match.params.id');
+        this.props.getArticle(articleId);
+    }
+    
+    navigateArticle(articleId) {
+        this.props.getArticle(articleId);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            article: nextProps.article,
+            previousArticle: nextProps.previousArticle,
+            nextArticle: nextProps.nextArticle,
+        })
     }
   
     render() {
-        const { article } = this.state;
+        const { article, previousArticle, nextArticle } = this.state;
         const { classes } = this.props;
         return (
-            <div>
+            <div className='transition-item'>
                 {<article key={article._id}>
                     <div
                         className={classes.hero}
                         style={{ backgroundImage: `url(${path + get(article, 'media.url')})` }}
                     >
-                        <div className={classes.titleWrapper}>
-                            <h1>{article.title}</h1>
-                            <small>{article.createdAt}</small>
+                        <div className={classes.transparentLayer} >
+                            <div className={classes.titleWrapper}>
+                                <h1>{article.title}</h1>
+                                <small>{moment(article.createdAt).format('DD MMMM, YYYY')}</small>
+                            </div>
+                            <div className={classes.adjacentArticlesNav}>
+                                {previousArticle && <Link
+                                    to={`/articles/${previousArticle._id}`}
+                                    className={classes.adjacentArticle}
+                                    onClick={() => this.navigateArticle(previousArticle._id)}
+                                >
+                                    <span>&#10229;</span>
+                                    <div>{previousArticle.title}</div>
+                                </Link>}
+
+                                <div className={classes.adjacentArticle}></div>
+
+                                {nextArticle && <Link
+                                    to={`/articles/${nextArticle._id}`}
+                                    className={classes.adjacentArticle + ' ' + classes.right}
+                                    onClick={() => this.navigateArticle(nextArticle._id)}
+                                >
+                                    <span>&#10230;</span>
+                                    <div>{nextArticle.title}</div>
+                                </Link>}
+                            </div>
                         </div>
                     </div>
                     <div className={classes.bodyWrapper}>
@@ -70,8 +109,18 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
+function mapStateToProps(state = {}) {
+    const currentIndex = state.articles.findIndex(a => a._id === state.article._id);
+
+    return {
+        article: state.article,
+        previousArticle: state.articles[currentIndex - 1],
+        nextArticle: state.articles[currentIndex + 1],
+    }
+}
+
 export default connect(
-  null,
-  mapDispatchToProps)(
-  withStyles(articlePageStyles)(ArticlePage)
+    mapStateToProps,
+    mapDispatchToProps)(
+    withStyles(articlePageStyles)(ArticlePage)
 );

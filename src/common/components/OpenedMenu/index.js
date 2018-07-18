@@ -34,9 +34,9 @@ class OpenedMenu extends React.Component {
   
     render() {
         const { menuItems } = this.state;
-        const { classes } = this.props;
+        const { classes, close } = this.props;
         return (
-            <div className={classes.openedMenu}>
+            <div className={classes.openedMenu} onClick={close} >
                 {menuItems.map(menuItem => <MenuItem
                     key={menuItem.name}
                     menuItem={menuItem}

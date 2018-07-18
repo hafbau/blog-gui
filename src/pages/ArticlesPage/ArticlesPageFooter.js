@@ -20,7 +20,8 @@ function ArticlesPageFooter(props) {
 }
 
 ArticlesPageFooter.propTypes = {
-  classes: PropTypes.object.isRequired
+  arrowsClass: PropTypes.string.isRequired,
+  footerClass: PropTypes.string.isRequired
 };
 
 export default ArticlesPageFooter;

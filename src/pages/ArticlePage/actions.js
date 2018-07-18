@@ -5,11 +5,11 @@ export default {
     getArticle(id) {
         return function (dispatch) {
             return api.getArticle(id)
-            //     .then(articles => dispatch({
-            //         type: constants.GET_ARTICLES_SUCCESS,
-            //         articles
-            //     })
-            // )
+                .then(article => dispatch({
+                    type: constants.GET_ARTICLE_SUCCESS,
+                    article
+                })
+            )
         }
     }
 }

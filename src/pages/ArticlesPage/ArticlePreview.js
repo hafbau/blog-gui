@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import config from 'config';
 import { Link } from 'react-router-dom';
-import { P } from 'common/components';
+import moment from 'moment';
 
 const path = config.API_PATH;
 export default class ArticlePreview extends React.Component {
@@ -25,12 +25,14 @@ export default class ArticlePreview extends React.Component {
                 onMouseEnter={() => this.toggleHover() }
                 onMouseLeave={() => this.toggleHover() }
             >
-                <Link to={`/articles/${article._id}`} >
-                    <div className={classes.articlePreviewTextWrapper}>
-                        <h1>{article.title}</h1>
-                        {this.state.hover && <P>{article.summary}</P>}
-                        <small>{article.createdAt}</small>
-                    </div>
+                <div className={classes.articlePreviewTextWrapper}>
+                    <h1>{article.title}</h1>
+                    {this.state.hover && <p>{article.summary}</p>}
+                    <small>{moment(article.createdAt).format('DD MMMM, YYYY')}</small>
+                </div>
+                <Link
+                    to={`/articles/${article._id}`}
+                    className={classes.absoluteLink}>
                 </Link>
             </article>
         )

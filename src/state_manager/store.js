@@ -4,15 +4,17 @@
 
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { createReducer, formInitialStatePrefilled } from './reducer';
+import rootReducer from './reducer';
 
 
 
 const initialState = {
-    form: formInitialStatePrefilled
+    articles: [],
+    article: {}
 };
+
 export default createStore(
-    createReducer(),
+    rootReducer,
     initialState,
     applyMiddleware(thunk),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

@@ -63,7 +63,6 @@ a {
 }
 
 a:hover, a:focus {
-    color: #eeeeee;
     text-decoration: none;
 }
 
@@ -74,6 +73,7 @@ legend {
 * {
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
     -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
 }
 
 *:focus {
@@ -167,4 +167,21 @@ pre {
         position: relative;
         overflow-x: hidden;
     }
+}
+
+.transition-appear {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+}
+.transition-appear.transition-appear-active {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+.transition-leave {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+.transition-leave.transition-leave-active {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
 }

@@ -5,22 +5,27 @@ import { bindActionCreators } from 'redux';
 
 import { withStyles } from '@material-ui/core';
 import actions from './articlesPageActions';
-import articlesPageStyles from './articlesPageStyles';
+import articlesPageStyles from './articlesPageStyle';
 import ArticlePreview from './ArticlePreview';
 import ArticlesPageFooter from './ArticlesPageFooter';
 
 class ArticlesPage extends React.Component {
     constructor(props) {
         super(props);
+        console.log('props in articles page construction', props)
         this.state = {
-            articles: [],
+            articles: props.articles || [],
             currentPage: 0
         }
     }
     
     componentWillMount() {
         this.props.getArticles()
-            .then(articles => this.setState({ articles }));
+            // .then(articles => this.setState({ articles }));
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({ articles: nextProps.articles });
     }
 
     navigate(step) {
@@ -31,15 +36,15 @@ class ArticlesPage extends React.Component {
         const { articles, currentPage } = this.state;
         const { classes } = this.props;
         const currentPageArticles = articles.slice(currentPage, currentPage + 3)
-        return ([
+        return (<div className='transition-item'>
             <div className={classes.articles}>
                 {
-                    currentPageArticles.map(article => < ArticlePreview
+                    currentPageArticles.map(article => <ArticlePreview
                     key={article._id}
                     article={article}
                     classes={classes}
                 />)}
-            </div>,
+            </div>
             <ArticlesPageFooter
                 footerClass={classes.footer}
                 arrowsClass={classes.arrows}
@@ -47,7 +52,7 @@ class ArticlesPage extends React.Component {
                 hasNext={currentPage + 3 < articles.length}
                 onNavigate={(step) => this.navigate(step)}
             />
-        ]);
+        </div>);
     }
 }
 
@@ -59,10 +64,17 @@ function mapDispatchToProps(dispatch) {
     return {
         getArticles: bindActionCreators(actions.getArticles, dispatch),
     }
+};
+
+function mapStateToProps(state) {
+    console.log('state in articlesPage index', state)
+    return {
+        articles: state.articles
+    }
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps)(
   withStyles(articlesPageStyles)(ArticlesPage)
 );

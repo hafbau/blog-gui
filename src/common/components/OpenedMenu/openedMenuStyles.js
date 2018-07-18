@@ -4,7 +4,7 @@
 import {
     articles,
     articlePreviewTextWrapper
-} from 'pages/ArticlesPage/articlesPageStyles'
+} from 'pages/ArticlesPage/articlesPageStyle'
 const openedMenuStyle = theme => ({
     openedMenu: {
         ...articles,

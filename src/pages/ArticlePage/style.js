@@ -1,6 +1,14 @@
 // ##############################
 // // // Article Page styles
 // #############################
+export const transparentLayer = {
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '40px',
+    boxSizing: 'border-box'
+};
 
 const articlesPageStyle = theme => ({
     hero: {
@@ -10,15 +18,18 @@ const articlesPageStyle = theme => ({
         height: '100vh',
         position: 'relative',
         top: '0',
-        left: '0'
+        left: '0',
+        backgroundColor: '#232'
     },
+    transparentLayer,
     titleWrapper: {
+        boxSizing: 'border-box',
+        textTransform: 'uppercase',
         margin: '0 auto',
         width: '50%',
-        boxSizing: 'border-box',
         fontWeight: '700',
-        textTransform: 'uppercase',
         height: '100%',
+        flex: '1',
         padding: '80px 20px',
         display: 'flex',
         flexDirection: 'column',
@@ -28,6 +39,18 @@ const articlesPageStyle = theme => ({
             fontWeight: '700',
             fontSize: '4em',
         }
+    },
+    adjacentArticlesNav: {
+        display: 'flex',
+        justifyContent: 'space-between',
+    },
+    adjacentArticle: {
+        '& > span': {
+            fontSize: '2.2em'
+        }
+    },
+    right: {
+        textAlign: 'right'
     },
     bodyWrapper: {
         display: 'flex',
