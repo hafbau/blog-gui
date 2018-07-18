@@ -20,7 +20,7 @@ class ArticlesPage extends React.Component {
     }
     
     componentWillMount() {
-        this.props.getArticles()
+        !this.props.articles.length && this.props.getArticles()
             // .then(articles => this.setState({ articles }));
     }
 
@@ -36,7 +36,7 @@ class ArticlesPage extends React.Component {
         const { articles, currentPage } = this.state;
         const { classes } = this.props;
         const currentPageArticles = articles.slice(currentPage, currentPage + 3)
-        return (<div className='transition-item'>
+        return (<div className={classes.articlesPage + ' transition-item'}>
             <div className={classes.articles}>
                 {
                     currentPageArticles.map(article => <ArticlePreview

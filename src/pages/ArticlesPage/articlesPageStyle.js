@@ -28,6 +28,9 @@ export const absoluteLink = {
 };
 
 const articlesPageStyle = theme => ({
+    articlesPage: {
+        transition: 'transform 0.5s, opacity 0.5s'
+    },
     articles,
     articlePreview: {
         backgroundSize: 'cover',
@@ -51,6 +54,7 @@ const articlesPageStyle = theme => ({
     arrows: {
         borderRadius: '50%',
         backgroundColor: 'white',
+        boxSizing: 'content-box',
         padding: '15px',
         cursor: 'pointer',
         color: '#555555'

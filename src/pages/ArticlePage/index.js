@@ -29,7 +29,8 @@ class ArticlePage extends React.Component {
         this.props.getArticle(articleId);
     }
     
-    navigateArticle(articleId) {
+    navigateArticle(e, articleId) {
+        e.preventDefault();
         this.props.getArticle(articleId);
     }
 
@@ -45,7 +46,7 @@ class ArticlePage extends React.Component {
         const { article, previousArticle, nextArticle } = this.state;
         const { classes } = this.props;
         return (
-            <div className='transition-item'>
+            <div className={classes.articlePage + ' transition-item'}>
                 {<article key={article._id}>
                     <div
                         className={classes.hero}
@@ -60,7 +61,7 @@ class ArticlePage extends React.Component {
                                 {previousArticle && <Link
                                     to={`/articles/${previousArticle._id}`}
                                     className={classes.adjacentArticle}
-                                    onClick={() => this.navigateArticle(previousArticle._id)}
+                                    onClick={(e) => this.navigateArticle(e, previousArticle._id)}
                                 >
                                     <span>&#10229;</span>
                                     <div>{previousArticle.title}</div>
@@ -71,7 +72,7 @@ class ArticlePage extends React.Component {
                                 {nextArticle && <Link
                                     to={`/articles/${nextArticle._id}`}
                                     className={classes.adjacentArticle + ' ' + classes.right}
-                                    onClick={() => this.navigateArticle(nextArticle._id)}
+                                    onClick={(e) => this.navigateArticle(e, nextArticle._id)}
                                 >
                                     <span>&#10230;</span>
                                     <div>{nextArticle.title}</div>

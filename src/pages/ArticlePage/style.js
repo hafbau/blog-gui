@@ -10,7 +10,10 @@ export const transparentLayer = {
     boxSizing: 'border-box'
 };
 
-const articlesPageStyle = theme => ({
+const articlePageStyle = theme => ({
+    articlePage: {
+        transition: 'transform 2s, opacity 2s'
+    },
     hero: {
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
@@ -83,4 +86,4 @@ const articlesPageStyle = theme => ({
     }
 });
 
-export default articlesPageStyle;
+export default articlePageStyle;

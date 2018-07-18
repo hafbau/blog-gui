@@ -16,6 +16,7 @@ const aboutPageStyles = theme => ({
         width: '100%',
         height: '100vh',
         justifyContent: 'center',
+        transition: 'transform 0.5s, opacity 0.5s',
         '& button': {
             fontSize: '1.5rem',
             textTransform: 'uppercase',
