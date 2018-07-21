@@ -13,15 +13,12 @@ import config from 'config';
 import actions from './actions';
 import articlePageStyles from './style';
 
-const path = config.API_PATH;
+import { Flipped } from 'react-flip-toolkit';
+const path = config.MEDIA_PATH;
 class ArticlePage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            article: props.article || {},
-            previousArticle: props.previousArticle,
-            nextArticle: props.nextArticle
-        }
+        this.state = {}
     }
     
     componentWillMount() {
@@ -45,12 +42,14 @@ class ArticlePage extends React.Component {
     render() {
         const { article, previousArticle, nextArticle } = this.state;
         const { classes } = this.props;
+        
+        if (!article) return null;
         return (
-            <div className={classes.articlePage + ' transition-item'}>
+            <Flipped flipId={article._id} ><div>
                 {<article key={article._id}>
                     <div
                         className={classes.hero}
-                        style={{ backgroundImage: `url(${path + get(article, 'media.url')})` }}
+                        style={{ backgroundImage: `url(${path + article._id}` }}
                     >
                         <div className={classes.transparentLayer} >
                             <div className={classes.titleWrapper}>
@@ -95,7 +94,7 @@ class ArticlePage extends React.Component {
                         <aside className={classes.contentAside}></aside>
                     </div>
                 </article>}
-            </div>
+            </div></Flipped>
         );
     }
 }

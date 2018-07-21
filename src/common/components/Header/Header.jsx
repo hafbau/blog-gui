@@ -15,10 +15,11 @@ function Header({ ...props }) {
   return (
     <header className={classes.appBar}>
         <div className={classes.title}>
-            <Link to="/articles" className={classes.pageTitle}>
+            <div className={classes.pageTitle}>
                 Hafiz Suara
                 <ArrowRight className={classes.middle} />
-            </Link>
+            </div>
+            <Link to="/articles" className={classes.absoluteLink}></Link>
         </div>
         
         <HeaderLinks />

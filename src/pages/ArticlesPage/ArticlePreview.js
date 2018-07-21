@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import config from 'config';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import { Flipped } from 'react-flip-toolkit';
 
-const path = config.API_PATH;
+const path = config.MEDIA_PATH;
 export default class ArticlePreview extends React.Component {
     state = {
         hover: false
@@ -17,11 +18,11 @@ export default class ArticlePreview extends React.Component {
     render() {
         const { article, classes } = this.props;
 
-        return (
-            <article
+        return (<Flipped flipId={article._id} >
+            <div
                 className={classes.articlePreview}
                 key={article._id}
-                style={{ backgroundImage: `url(${path + article.media.url})` }}
+                style={{ backgroundImage: `url(${path + article._id})` }}
                 onMouseEnter={() => this.toggleHover() }
                 onMouseLeave={() => this.toggleHover() }
             >
@@ -34,8 +35,8 @@ export default class ArticlePreview extends React.Component {
                     to={`/articles/${article._id}`}
                     className={classes.absoluteLink}>
                 </Link>
-            </article>
-        )
+            </div>
+        </Flipped>)
     }
 }
 

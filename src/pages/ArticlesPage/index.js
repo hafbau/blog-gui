@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
+import { bindActionCreators } from 'redux';
 import { withStyles } from '@material-ui/core';
 import actions from './articlesPageActions';
+
 import articlesPageStyles from './articlesPageStyle';
 import ArticlePreview from './ArticlePreview';
 import ArticlesPageFooter from './ArticlesPageFooter';
@@ -36,7 +37,7 @@ class ArticlesPage extends React.Component {
         const { articles, currentPage } = this.state;
         const { classes } = this.props;
         const currentPageArticles = articles.slice(currentPage, currentPage + 3)
-        return (<div className={classes.articlesPage + ' transition-item'}>
+        return (<div>
             <div className={classes.articles}>
                 {
                     currentPageArticles.map(article => <ArticlePreview
@@ -67,7 +68,6 @@ function mapDispatchToProps(dispatch) {
 };
 
 function mapStateToProps(state) {
-    console.log('state in articlesPage index', state)
     return {
         articles: state.articles
     }

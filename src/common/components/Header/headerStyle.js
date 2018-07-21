@@ -3,7 +3,7 @@
 // #############################
 
 import {
-  defaultFont,
+  defaultFont, absoluteLink
 } from 'assets/jss/global_styles_variables';
 
 const headerStyle = theme => ({
@@ -23,6 +23,7 @@ const headerStyle = theme => ({
   },
   title: {
     ...defaultFont,
+    position: 'relative',
     lineHeight: '30px',
     borderRadius: '25px',
     padding: '10px 25px',
@@ -41,7 +42,8 @@ const headerStyle = theme => ({
   },
   pageTitle: {
     fontWeight: '700'
-  }
+  },
+  absoluteLink
 });
 
 export default headerStyle;

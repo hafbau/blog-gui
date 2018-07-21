@@ -5,19 +5,18 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { withStyles } from '@material-ui/core';
 import { Header } from 'common/components';
 import userRoutes from 'routes/userRoutes';
-
-import PageTransition from 'react-router-page-transition';
+import { Flipper } from 'react-flip-toolkit';
 import userLayoutStyle from './userLayoutStyle';
 
-const switchRoutes = (location) => (
-  <Switch location={location} >
-    {userRoutes.map((prop, key) => {
-      if (prop.redirect)
-        return <Redirect from={prop.path} to={prop.to} key={key} />;
-      return <Route path={prop.path} component={prop.component} key={key} />;
-    })}
-  </Switch>
-);
+// const switchRoutes = (
+//   <Switch>
+//     {userRoutes.map((prop, key) => {
+//       if (prop.redirect)
+//         return <Redirect from={prop.path} to={prop.to} key={key} />;
+//       return <Route path={prop.path} component={prop.component} key={key} />;
+//     })}
+//   </Switch>
+// );
 
 class App extends React.Component {
   state = {
@@ -30,21 +29,28 @@ class App extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
     return (
-      <div className={classes.wrapper}>
+      <Flipper flipKey={this.props.location.key} >
         <div className={classes.mainPanel}>
           <Header
             routes={userRoutes}
             handleMenuToggle={() => this.handleMenuToggle}
             {...rest}
           />
-          <PageTransition>
-            <div className={classes.content}>
-              <div className={classes.container}>{switchRoutes(this.props.location)}</div>
+          
+          <div className={classes.content}>
+            <div className={classes.container}>
+                <Switch location={this.props.location} >
+                    {userRoutes.map((prop, key) => {
+                    if (prop.redirect)
+                        return <Redirect from={prop.path} to={prop.to} key={key} />;
+                    return <Route path={prop.path} component={prop.component} key={key} />;
+                    })}
+                </Switch>
             </div>
-          </PageTransition>
+          </div>
           
         </div>
-      </div>
+      </Flipper>
     );
   }
 }
