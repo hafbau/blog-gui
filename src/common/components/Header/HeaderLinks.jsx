@@ -30,7 +30,7 @@ class HeaderLinks extends React.Component {
           {!openMenu && <MenuIcon className={classes.links} />}
         </div>,
 
-        <div key="openedMenu">{this.state.openMenu && <OpenedMenu close={(e) => this.toggleMenu()} />}</div>
+        <div key="openedMenu"><OpenedMenu close={(e) => this.toggleMenu()} style={{ opacity: `${this.state.openMenu ? 1 : 0}`}} /></div>
     ]
     );
   }

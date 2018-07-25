@@ -4,9 +4,12 @@
 import {
     articles,
     articlePreviewTextWrapper
-} from 'pages/ArticlesPage/articlesPageStyle'
+} from 'pages/ArticlesPage/articlesPageStyle';
+import { transition } from 'assets/jss/global_styles_variables';
+
 const openedMenuStyle = theme => ({
     openedMenu: {
+        ...transition,
         ...articles,
         position: 'absolute',
         top: '0',
