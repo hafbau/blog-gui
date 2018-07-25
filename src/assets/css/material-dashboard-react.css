@@ -168,3 +168,12 @@ pre {
         overflow-x: hidden;
     }
 }
+.fade-enter {
+    opacity: 0;
+    z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: all 0.7s ease-in;
+}

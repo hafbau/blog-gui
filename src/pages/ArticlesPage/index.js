@@ -37,7 +37,7 @@ class ArticlesPage extends React.Component {
         const { articles, currentPage } = this.state;
         const { classes } = this.props;
         const currentPageArticles = articles.slice(currentPage, currentPage + 3)
-        return (<div>
+        return (<div key={this.props.location.key}>
             <div className={classes.articles}>
                 {
                     currentPageArticles.map(article => <ArticlePreview

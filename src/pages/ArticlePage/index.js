@@ -13,7 +13,7 @@ import config from 'config';
 import actions from './actions';
 import articlePageStyles from './style';
 
-import { Flipped } from 'react-flip-toolkit';
+
 const path = config.MEDIA_PATH;
 class ArticlePage extends React.Component {
     constructor(props) {
@@ -45,7 +45,7 @@ class ArticlePage extends React.Component {
         
         if (!article) return null;
         return (
-            <Flipped flipId={article._id} ><div>
+            <div>
                 {<article key={article._id}>
                     <div
                         className={classes.hero}
@@ -94,7 +94,7 @@ class ArticlePage extends React.Component {
                         <aside className={classes.contentAside}></aside>
                     </div>
                 </article>}
-            </div></Flipped>
+            </div>
         );
     }
 }

@@ -1,22 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core';
 import { Header } from 'common/components';
 import userRoutes from 'routes/userRoutes';
-import { Flipper } from 'react-flip-toolkit';
 import userLayoutStyle from './userLayoutStyle';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-// const switchRoutes = (
-//   <Switch>
-//     {userRoutes.map((prop, key) => {
-//       if (prop.redirect)
-//         return <Redirect from={prop.path} to={prop.to} key={key} />;
-//       return <Route path={prop.path} component={prop.component} key={key} />;
-//     })}
-//   </Switch>
-// );
+const switchRoutes = (location) => (
+    <Router>
+        {/* <Route render={({ location }) => ( */}
+            <TransitionGroup>
+                <CSSTransition
+                    key={location.key}
+                    timeout={300}
+                    classNames='fade'
+                >
+                    <Switch location={location}>
+                        {userRoutes.map((prop, key) => {
+                        if (prop.redirect)
+                            return <Redirect from={prop.path} to={prop.to} key={key} />;
+                        return <Route exact path={prop.path} component={prop.component} key={key} />;
+                        })}
+                    </Switch>
+                </CSSTransition>
+            </TransitionGroup>
+        {/* )} /> */}
+    </Router>
+
+);
 
 class App extends React.Component {
   state = {
@@ -29,7 +42,6 @@ class App extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
     return (
-      <Flipper flipKey={this.props.location.key} >
         <div className={classes.mainPanel}>
           <Header
             routes={userRoutes}
@@ -39,18 +51,11 @@ class App extends React.Component {
           
           <div className={classes.content}>
             <div className={classes.container}>
-                <Switch location={this.props.location} >
-                    {userRoutes.map((prop, key) => {
-                    if (prop.redirect)
-                        return <Redirect from={prop.path} to={prop.to} key={key} />;
-                    return <Route path={prop.path} component={prop.component} key={key} />;
-                    })}
-                </Switch>
+                {switchRoutes(this.props.location)}
             </div>
           </div>
           
         </div>
-      </Flipper>
     );
   }
 }

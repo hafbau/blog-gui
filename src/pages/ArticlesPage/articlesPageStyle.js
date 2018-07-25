@@ -1,6 +1,7 @@
 // ##############################
 // // // Articles Page styles
 // #############################
+import { transition } from 'assets/jss/global_styles_variables'
 
 export const articles = {
     alignItems: 'stretch',
@@ -32,15 +33,29 @@ const articlesPageStyle = theme => ({
         transition: 'transform 0.5s, opacity 0.5s'
     },
     articles,
+    articlePreviewTextWrapper,
+    absoluteLink,
     articlePreview: {
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
         width: '33.3%',
         backgroundColor: '#232',
-        position: 'relative'
+        position: 'relative',
+        ...transition,
+        '& h1': {
+            ...transition,
+            transform: 'translateY(100px)',
+        },
+        '&:hover p, &:hover h1': {
+            transform: 'translateY(0)'
+        }
     },
-    articlePreviewTextWrapper,
-    absoluteLink,
+    articlePreviewSummary: {
+        ...transition,
+        transform: 'translateY(3333px)',
+        height: '100px',
+        overflowY: 'hidden'
+    },
     footer: {
         position: 'absolute',
         bottom: '0',
