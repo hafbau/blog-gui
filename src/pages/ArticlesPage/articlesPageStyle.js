@@ -7,6 +7,7 @@ export const articles = {
     alignItems: 'stretch',
     display: 'flex',
     height: '100vh',
+    width: 'fit-content',
 }
 export const articlePreviewTextWrapper = {
     backgroundColor: 'rgba(0, 0, 0, 0.2)',
@@ -29,19 +30,21 @@ export const absoluteLink = {
 };
 
 const articlesPageStyle = theme => ({
-    articlesPage: {
-        transition: 'transform 0.5s, opacity 0.5s'
+    articles: {
+        ...articles,
+        ...transition,
+        transform: 'translateX(0)'
     },
-    articles,
     articlePreviewTextWrapper,
     absoluteLink,
     articlePreview: {
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
-        width: '33.3%',
+        width: `${100/3}vw`,
         backgroundColor: '#232',
         position: 'relative',
-        ...transition,
+        overflow: 'hidden',
+        // ...transition,
         '& h1': {
             ...transition,
             transform: 'translateY(100px)',

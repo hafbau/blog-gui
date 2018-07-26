@@ -5,7 +5,7 @@ import ContactPage from 'pages/ContactPage';
 
 export default [
   {
-    path: '/articles/:id',
+    path: '/article/:id',
     component: ArticlePage
   },
   {

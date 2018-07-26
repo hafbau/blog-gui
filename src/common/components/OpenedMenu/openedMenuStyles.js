@@ -11,10 +11,11 @@ const openedMenuStyle = theme => ({
     openedMenu: {
         ...transition,
         ...articles,
+        overflow: 'hidden',
         position: 'absolute',
         top: '0',
         left: '0',
-        width: '100%',
+        width: '100vw',
         zIndex: '-1'
     },
     menuItem: {

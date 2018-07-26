@@ -15,6 +15,7 @@ body {
     color: #f4f4f4;
     font-weight: 300;
     margin: 0;
+    overflow-x: hidden;
 }
 
 blockquote footer:before,

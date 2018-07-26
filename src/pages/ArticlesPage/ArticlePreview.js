@@ -15,13 +15,13 @@ export default class ArticlePreview extends React.Component {
     }
 
     render() {
-        const { article, classes } = this.props;
+        const { article, classes, style } = this.props;
 
         return (
             <div
                 className={classes.articlePreview}
                 key={article._id}
-                style={{ backgroundImage: `url(${path + article._id})` }}
+                style={{ ...style, backgroundImage: `url(${path + article._id})` }}
             >
                 <div className={classes.articlePreviewTextWrapper}>
                     <h1>{article.title}</h1>
@@ -29,7 +29,7 @@ export default class ArticlePreview extends React.Component {
                     <small>{moment(article.createdAt).format('DD MMMM, YYYY')}</small>
                 </div>
                 <Link
-                    to={`/articles/${article._id}`}
+                    to={`/article/${article._id}`}
                     className={classes.absoluteLink}>
                 </Link>
             </div>

@@ -13,10 +13,9 @@ import ArticlesPageFooter from './ArticlesPageFooter';
 class ArticlesPage extends React.Component {
     constructor(props) {
         super(props);
-        console.log('props in articles page construction', props)
         this.state = {
             articles: props.articles || [],
-            currentPage: 0
+            currentPage: 0,
         }
     }
     
@@ -36,11 +35,11 @@ class ArticlesPage extends React.Component {
     render() {
         const { articles, currentPage } = this.state;
         const { classes } = this.props;
-        const currentPageArticles = articles.slice(currentPage, currentPage + 3)
+        const currentPageArticles = articles//.slice(currentPage, currentPage + 3)
         return (<div key={this.props.location.key}>
-            <div className={classes.articles}>
+            <div className={classes.articles} style={{ transform: `translateX(${currentPage * -100/3}vw)`}}>
                 {
-                    currentPageArticles.map(article => <ArticlePreview
+                    currentPageArticles.map((article, idx) => <ArticlePreview
                     key={article._id}
                     article={article}
                     classes={classes}

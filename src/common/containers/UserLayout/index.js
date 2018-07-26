@@ -8,56 +8,57 @@ import userRoutes from 'routes/userRoutes';
 import userLayoutStyle from './userLayoutStyle';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-const switchRoutes = (location) => (
+const switchRoutes = (
     <Router>
         {/* <Route render={({ location }) => ( */}
-            <TransitionGroup>
+            {/* <TransitionGroup>
                 <CSSTransition
-                    key={location.key}
+                    key={window.location.key}
                     timeout={300}
                     classNames='fade'
-                >
-                    <Switch location={location}>
+                > */}
+                    <Switch location={window.location}>
                         {userRoutes.map((prop, key) => {
                         if (prop.redirect)
                             return <Redirect from={prop.path} to={prop.to} key={key} />;
                         return <Route exact path={prop.path} component={prop.component} key={key} />;
                         })}
                     </Switch>
-                </CSSTransition>
-            </TransitionGroup>
+                {/* </CSSTransition>
+            </TransitionGroup> */}
         {/* )} /> */}
     </Router>
 
 );
 
 class App extends React.Component {
-  state = {
-    mobileOpen: true
-  };
-  handleMenuToggle = () => {
-    this.setState({ mobileOpen: !this.state.mobileOpen });
-  };
-  
-  render() {
-    const { classes, ...rest } = this.props;
-    return (
-        <div className={classes.mainPanel}>
-          <Header
-            routes={userRoutes}
-            handleMenuToggle={() => this.handleMenuToggle}
-            {...rest}
-          />
-          
-          <div className={classes.content}>
-            <div className={classes.container}>
-                {switchRoutes(this.props.location)}
+    state = {
+        mobileOpen: true
+    };
+    handleMenuToggle = () => {
+        this.setState({ mobileOpen: !this.state.mobileOpen });
+    };
+    
+    render() {
+        const { classes, ...rest } = this.props;
+        const myRoutes = switchRoutes;
+        return (
+            <div className={classes.mainPanel}>
+            <Header
+                routes={userRoutes}
+                handleMenuToggle={() => this.handleMenuToggle}
+                {...rest}
+            />
+            
+            <div className={classes.content}>
+                <div className={classes.container}>
+                    {myRoutes}
+                </div>
             </div>
-          </div>
-          
-        </div>
-    );
-  }
+            
+            </div>
+        );
+    }
 }
 
 App.propTypes = {

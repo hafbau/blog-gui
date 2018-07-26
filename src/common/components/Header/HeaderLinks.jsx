@@ -7,13 +7,15 @@ import headerLinksStyle from './headerLinksStyle';
 import OpenedMenu from '../OpenedMenu';
 
 class HeaderLinks extends React.Component {
-  state = {}
+  state = { openedMenu: false }
 
   toggleMenu() {
+    console.log('toggleMenu clicked', this.state)
     this.setState({ openMenu: !this.state.openMenu })
   }
   render() {
     const { openMenu } = this.state;
+    console.log("in render", openMenu)
     const { classes } = this.props;
     return (
       [
@@ -30,7 +32,7 @@ class HeaderLinks extends React.Component {
           {!openMenu && <MenuIcon className={classes.links} />}
         </div>,
 
-        <div key="openedMenu"><OpenedMenu close={(e) => this.toggleMenu()} style={{ opacity: `${this.state.openMenu ? 1 : 0}`}} /></div>
+        <div key="openedMenu"><OpenedMenu close={(e) => this.toggleMenu()} style={{ transform: `${openMenu ? 'translate(0)' : 'translate(100vw, -100vh)'}`}} /></div>
     ]
     );
   }

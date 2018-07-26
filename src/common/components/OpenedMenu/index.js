@@ -18,7 +18,7 @@ class OpenedMenu extends React.Component {
                 },
                 {
                     'name': 'Blog',
-                    'path': '/blog',
+                    'path': '/articles',
                     'summary': 'This is taking you back to the home of blog',
                     'backgroundColor': '#333'
                 },

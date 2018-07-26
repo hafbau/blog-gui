@@ -58,7 +58,7 @@ class ArticlePage extends React.Component {
                             </div>
                             <div className={classes.adjacentArticlesNav}>
                                 {previousArticle && <Link
-                                    to={`/articles/${previousArticle._id}`}
+                                    to={`/article/${previousArticle._id}`}
                                     className={classes.adjacentArticle}
                                     onClick={(e) => this.navigateArticle(e, previousArticle._id)}
                                 >
@@ -69,7 +69,7 @@ class ArticlePage extends React.Component {
                                 <div className={classes.adjacentArticle}></div>
 
                                 {nextArticle && <Link
-                                    to={`/articles/${nextArticle._id}`}
+                                    to={`/article/${nextArticle._id}`}
                                     className={classes.adjacentArticle + ' ' + classes.right}
                                     onClick={(e) => this.navigateArticle(e, nextArticle._id)}
                                 >
