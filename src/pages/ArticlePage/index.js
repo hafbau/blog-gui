@@ -27,7 +27,7 @@ class ArticlePage extends React.Component {
     }
     
     navigateArticle(e, articleId) {
-        e.preventDefault();
+        // e.preventDefault();
         this.props.getArticle(articleId);
     }
 
