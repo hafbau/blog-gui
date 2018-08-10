@@ -18,14 +18,27 @@ const path = config.MEDIA_PATH;
 class ArticlePage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = { enter: false}
     }
     
     componentWillMount() {
         const articleId = get(this.props, 'match.params.id');
         this.props.getArticle(articleId);
     }
-    
+
+    componentDidMount() {
+        this.timeout = setTimeout(() => {
+            if (document.getElementById('single-article')) {
+                document.getElementById('single-article').classList.add('entered');
+                document.getElementById('single-article').classList.remove('entering');
+            }
+        }, 0)
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.timeout)
+    }
+
     navigateArticle(e, articleId) {
         // e.preventDefault();
         this.props.getArticle(articleId);
@@ -40,13 +53,13 @@ class ArticlePage extends React.Component {
     }
   
     render() {
-        const { article, previousArticle, nextArticle } = this.state;
+        const { article, previousArticle, nextArticle, enter } = this.state;
         const { classes } = this.props;
         
         if (!article) return null;
         return (
             <div>
-                {<article key={article._id}>
+                {<article key={article._id} id='single-article' className='entering' >
                     <div
                         className={classes.hero}
                         style={{ backgroundImage: `url(${path + article._id}` }}

@@ -169,12 +169,27 @@ pre {
         overflow-x: hidden;
     }
 }
-.fade-enter {
-    opacity: 0;
-    z-index: 1;
+.entering {
+    transform: translateX(100vw);
+    transition: all 0.8s cubic-bezier(0.685, 0.0473, 0.346, 1)
 }
 
-.fade-enter.fade-enter-active {
-    opacity: 1;
-    transition: all 0.7s ease-in;
+.entered {
+    transform: translate(0)
 }
+/* .page-enter {
+    opacity: 0;
+    transition: all 2s cubic-bezier(0.685, 0.0473, 0.346, 1)
+}
+
+.page-enter-done {
+    opacity: 1;
+} */
+/* .page-exit {
+    opacity: 1;
+    transition: all 2s cubic-bezier(0.685, 0.0473, 0.346, 1)
+}
+
+.page-exit.page-exit-active {
+    opacity: 0;
+} */
