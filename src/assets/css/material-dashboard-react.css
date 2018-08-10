@@ -169,27 +169,28 @@ pre {
         overflow-x: hidden;
     }
 }
-.entering {
+/* .entering {
     transform: translateX(100vw);
     transition: all 0.8s cubic-bezier(0.685, 0.0473, 0.346, 1)
 }
 
 .entered {
     transform: translate(0)
-}
-/* .page-enter {
-    opacity: 0;
-    transition: all 2s cubic-bezier(0.685, 0.0473, 0.346, 1)
+} */
+.page-enter {
+    transform: translateX(100vw);
+    transition: all 0.8s cubic-bezier(0.685, 0.0473, 0.346, 1)
 }
 
 .page-enter-done {
-    opacity: 1;
-} */
-/* .page-exit {
-    opacity: 1;
-    transition: all 2s cubic-bezier(0.685, 0.0473, 0.346, 1)
+    transform: translateX(0);
+}
+
+.page-exit {
+    transform: translateX(0);
+    transition: all 0.8s cubic-bezier(0.685, 0.0473, 0.346, 1)
 }
 
 .page-exit.page-exit-active {
-    opacity: 0;
-} */
+    transform: translateX(100vw);
+}

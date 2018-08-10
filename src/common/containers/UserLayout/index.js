@@ -39,7 +39,7 @@ class App extends React.Component {
             
             <div className={classes.content}>
                     <div className={classes.container}>
-                        <Transitions pageKey={location.key} duration={2000} transition='page'>
+                        <Transitions pageKey={location.key} duration={800} transition='page'>
                             <Switch location={location}>
                             {userRoutes.map((prop, key) => {
                             if (prop.redirect)

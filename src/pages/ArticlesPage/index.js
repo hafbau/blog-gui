@@ -16,26 +16,12 @@ class ArticlesPage extends React.Component {
         this.state = {
             articles: props.articles || [],
             currentPage: 0,
-            enter: false
         }
     }
     
     componentWillMount() {
         !this.props.articles.length && this.props.getArticles()
             // .then(articles => this.setState({ articles }));
-    }
-
-    componentDidMount() {
-        this.timeout = setTimeout(() => {
-            if (document.getElementById('multi-articles')) {
-                document.getElementById('multi-articles').classList.add('entered');
-                document.getElementById('multi-articles').classList.remove('entering');
-            }
-        }, 0)
-    }
-    
-    componentWillUnmount() {
-        clearTimeout(this.timeout)
     }
 
     componentWillReceiveProps(nextProps) {
@@ -47,10 +33,10 @@ class ArticlesPage extends React.Component {
     }
   
     render() {
-        const { articles, currentPage, enter } = this.state;
+        const { articles, currentPage } = this.state;
         const { classes } = this.props;
         const currentPageArticles = articles//.slice(currentPage, currentPage + 3)
-        return (<div key={this.props.location.key} id='multi-articles' className='entering' >
+        return (<div key={this.props.location.key} >
             <div className={classes.articles} style={{ transform: `translateX(${currentPage * -100/3}vw)`}}>
                 {
                     currentPageArticles.map((article, idx) => <ArticlePreview

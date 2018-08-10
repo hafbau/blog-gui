@@ -32,8 +32,8 @@ export const absoluteLink = {
 const articlesPageStyle = theme => ({
     articles: {
         ...articles,
-        ...transition,
-        transform: 'translateX(0)'
+        // ...transition,
+        // transform: 'translateX(0)'
     },
     articlePreviewTextWrapper,
     absoluteLink,
