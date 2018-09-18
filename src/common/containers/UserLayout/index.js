@@ -43,8 +43,8 @@ class App extends React.Component {
                             <Switch location={location}>
                             {userRoutes.map((prop, key) => {
                             if (prop.redirect)
-                                return <Redirect from={prop.path} to={prop.to} key={key} />;
-                            return <Route path={prop.path} component={prop.component} key={key} />;
+                                return <Redirect from={prop.path} to={prop.to} key={location.key} />;
+                            return <Route path={prop.path} component={prop.component} key={location.key} />;
                             })}
                         </Switch>
                     </Transitions>

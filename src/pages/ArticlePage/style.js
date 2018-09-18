@@ -12,7 +12,11 @@ export const transparentLayer = {
 
 const articlePageStyle = theme => ({
     articlePage: {
-        transition: 'transform 2s, opacity 2s'
+        // position: 'absolute',
+        // top: 0,
+        // left: 0,
+        // height: '100vh',
+        // width: 'fit-content'
     },
     hero: {
         backgroundSize: 'cover',
@@ -59,7 +63,7 @@ const articlePageStyle = theme => ({
         display: 'flex',
         width: '100%',
         color: '#232',
-        padding: '60px 0',
+        padding: '120px 0',
         '& aside': {
             width: '20%',
             flex: '1'

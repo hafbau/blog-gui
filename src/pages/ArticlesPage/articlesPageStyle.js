@@ -30,10 +30,17 @@ export const absoluteLink = {
 };
 
 const articlesPageStyle = theme => ({
+    articlesPage: {
+        // position: 'absolute',
+        // top: 0,
+        // left: 0,
+        // height: '100vh',
+        // width: 'fit-content'
+    },
     articles: {
         ...articles,
-        // ...transition,
-        // transform: 'translateX(0)'
+        ...transition,
+        transform: 'translateX(0)'
     },
     articlePreviewTextWrapper,
     absoluteLink,
@@ -44,7 +51,6 @@ const articlesPageStyle = theme => ({
         backgroundColor: '#232',
         position: 'relative',
         overflow: 'hidden',
-        // ...transition,
         '& h1': {
             ...transition,
             transform: 'translateY(100px)',

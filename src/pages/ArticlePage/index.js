@@ -45,7 +45,7 @@ class ArticlePage extends React.Component {
         
         if (!article) return null;
         return (
-            <div key={this.props.location.key}>
+            <div key={this.props.location.key} >
                 {<article key={article._id} >
                     <div
                         className={classes.hero}
